@@ -25,17 +25,29 @@ include "subnet" {
 }
 
 inputs = {
-
   ipv4_cidrs = [
     {
-      private = [local.workload_vars.locals.subnet_cidr_blocks.az1.reserved],
-      public  = [],
+      private = [
+        local.subnet_cidr_blocks.az1.reserved,
+        local.subnet_cidr_blocks.az2.reserved,
+        local.subnet_cidr_blocks.az3.reserved,
+      ],
+      public = [],
     }
   ]
   public_subnets_enabled = false
+  subnets_per_az_count   = 1
   nat_gateway_enabled    = false
   nat_instance_enabled   = false
-  availability_zone_ids  = [local.workload_vars.locals.subnet_cidr_blocks.az1.az_id]
+  availability_zone_ids  = [
+    local.workload_vars.locals.subnet_cidr_blocks.az1.az_id,
+    local.workload_vars.locals.subnet_cidr_blocks.az2.az_id,
+    local.workload_vars.locals.subnet_cidr_blocks.az3.az_id,
+  ]
+  subnets_per_az_names = ["reserved"]
+  private_label        = "reserved"
+  #  ipv4_enabled
+  #  ipv6_enabled
 }
 
 

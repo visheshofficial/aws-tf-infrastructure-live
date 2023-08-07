@@ -7,6 +7,3 @@ terraform {
   source = "${local.module_url}"
 }
 
-inputs = {
-  name = "tls-public-vpc"
-}

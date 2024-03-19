@@ -1,7 +1,7 @@
 locals {
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
   region_vars  = read_terragrunt_config(find_in_parent_folders("region.hcl"))
-
+  tf-state     =  format("%s:%s", "${lower(local.aws_account_name)}-aws-terraform-state", "${path_relative_to_include()}/terraform.tfstate")
   aws_account_name   = local.account_vars.locals.aws_account_name
   aws_account_id     = local.account_vars.locals.aws_account_id
   ## Fetch AWS Mandatory tags map

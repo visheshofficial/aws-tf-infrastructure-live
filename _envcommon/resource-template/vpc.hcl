@@ -1,6 +1,6 @@
 locals {
-  modules_git_urls = read_terragrunt_config(find_in_parent_folders("modules-git-urls.hcl"))
-  module_url       = local.modules_git_urls.locals.github_cloudposse_urls.vpc
+  catalog = read_terragrunt_config(find_in_parent_folders("catalog.hcl"))
+  module_url       = local.catalog.locals.github_cloudposse_urls.vpc
 }
 
 terraform {

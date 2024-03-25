@@ -1,0 +1,8 @@
+---
+separators:
+  all : "-"
+prefixes:
+  vpc : "${environment}"
+
+suffixes:
+  vpc: "vpc"
